@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.days.moment.notice.mapper.NoticeMapper">
+
+    <insert id ="insert">
+        insert into practice_notice(notice_title, notice_content)
+        values(#{noticeTitle}, #{noticeContent})
+
+        <selectKey order="AFTER" resultType="long" keyProperty="noticeNo">
+            select last_insert_id()
+        </selectKey>
+    </insert>
+
+    <select id="getList" resultType="com.days.moment.notice.domain.Notice">
+        select
+        notice_no as noticeNo,
+        notice_title as noticeTitle,
+        notice_content as noticeContent,
+        notice_regdate as noticeRegDate,
+        notice_delete as noticeDelete
+        from practice_notice
+        order by notice_no desc limit #{skip},#{size}
+    </select>
+
+    <select id="getCount" resultType="int">
+        select count(notice_no) from practice_notice
+    </select>
+
+    <resultMap id="noticeMap" type="com.days.moment.notice.domain.Notice">
+        <id property="noticeNo" column="notice_no"></id>
+        <result property="noticeTitle" column="notice_title"></result>
+        <result property="noticeContent" column="notice_content"></result>
+        <result property="noticeRegDate" column="notice_regdate"></result>
+        <result property="noticeDelete" column="notice_delete"></result>
+        <collection property="attachList" resultMap="attachMap"></collection>
+    </resultMap>
+
+    <resultMap id="attachMap" type="com.days.moment.notice.domain.NoticeAttach">
+        <result property="uuid" column="uuid"></result>
+        <result property="noticeNo" column="notice_no"></result>
+        <result property="path" column="path"></result>
+        <result property="fileName" column="fileName"></result>
+        <result property="image" column="image"></result>
+    </resultMap>
+
+    <select id="select" resultMap="noticeMap">
+        select * from practice_notice notice left join practice_noticeattach na on notice.notice_no = na.notice_no
+        where notice.notice_no = #{noticeNo}
+    </select>
+
+    <insert id="insertAttach">
+        insert into practice_noticeattach(uuid, notice_no, fileName, path, image)
+        values(#{uuid}, #{noticeNo}, #{fileName}, #{path}, #{image})
+    </insert>
+
+    <update id="update">
+        update practice_notice set notice_title =#{noticeTitle}, notice_content=#{noticeContent}
+        where notice_no=#{noticeNo}
+    </update>
+
+    <update id="deleteAttach">
+        delete from practice_noticeattach where notice_no=#{noticeNo}
+    </update>
+
+    <delete id="delete">
+        delete from practice_notice where notice_no = #{noticeNo}
+    </delete>
+
+</mapper>
