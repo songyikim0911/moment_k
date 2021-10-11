@@ -1,5 +1,6 @@
 package com.days.moment.common.config;
 
+import com.days.moment.board.config.BoardRootConfig;
 import com.days.moment.notice.config.NoticeRootConfig;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -19,9 +20,9 @@ import java.util.ArrayList;
 
 @Log4j2
 @Configuration
-@Import(NoticeRootConfig.class)
+@Import({NoticeRootConfig.class, BoardRootConfig.class})
 @EnableTransactionManagement
-public class RootConfig {
+public class RootConfig  {
 
     @Bean
     public SqlSessionFactory sqlSessionFactory() throws Exception{
@@ -35,14 +36,18 @@ public class RootConfig {
         HikariConfig config = new HikariConfig();
         //config.setDriverClassName("com.mysql.cj.jdbc.Driver");
 
+
         config.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
 
         //config.setJdbcUrl("jdbc:mysql://localhost:3306/springdb");
-        config.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3306/songdb");
-        config.setUsername("songuser");
-        config.setPassword("songuser1234");
+        config.setJdbcUrl("jdbc:log4jdbc:mysql://hyun-9999.asuscomm.com:3377/momentdb");
+        config.setUsername("master");
+        config.setPassword("11009900");
         HikariDataSource dataSource = new HikariDataSource(config);
         return dataSource;
+
+
+
     }
 
     @Bean

@@ -1,7 +1,7 @@
 package com.days.moment.notice.domain;
 
 import com.days.moment.notice.dto.NoticeDTO;
-import com.days.moment.notice.dto.UploadResponseDTO;
+import com.days.moment.common.dto.UploadResponseDTO;
 import lombok.*;
 
 
@@ -22,7 +22,7 @@ public class Notice {
     private String noticeTitle;
     private String noticeContent;
     private LocalDateTime noticeRegDate;
-    private boolean noticeDelete;
+
 
 
     @Builder.Default
@@ -34,7 +34,6 @@ public class Notice {
                 .noticeTitle(noticeTitle)
                 .noticeContent(noticeContent)
                 .noticeRegDate(noticeRegDate)
-                .noticeDelete(noticeDelete)
                 .build();
 
         List<UploadResponseDTO> uploadResponseDTOList = attachList.stream().map(attach ->{

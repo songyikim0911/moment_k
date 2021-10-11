@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-@ControllerAdvice//웹기반이라 필요
+//@ControllerAdvice//웹기반이라 필요
 @Log4j2
 //이 페이지는 ServletConfig에서 ComponentScan으로 이어준다.
 public class CommonExceptionAdvice {//컨트롤러인데 , 예외를 처리하는 특별한 컨트롤러

@@ -1,5 +1,6 @@
 package com.days.moment.notice.dto;
 
+import com.days.moment.common.dto.UploadResponseDTO;
 import com.days.moment.notice.domain.Notice;
 import com.days.moment.notice.domain.NoticeAttach;
 import lombok.AllArgsConstructor;
@@ -24,7 +25,7 @@ public class NoticeDTO {
     private String noticeTitle;
     private String noticeContent;
     private LocalDateTime noticeRegDate;
-    private boolean noticeDelete;
+
 
     @Builder.Default
     private List<UploadResponseDTO> files = new ArrayList<>();
@@ -36,7 +37,6 @@ public class NoticeDTO {
                 .noticeTitle(noticeTitle)
                 .noticeContent(noticeContent)
                 .noticeRegDate(noticeRegDate)
-                .noticeDelete(noticeDelete)
                 .build();
 
         files.forEach(uploadResponseDTO -> {

@@ -39,6 +39,7 @@ public class NoticeServiceImpl implements NoticeService {
 
     }
 
+
     @Override
     public PageResponseDTO<NoticeDTO> getDTOList(PageRequestDTO pageRequestDTO) {
 
@@ -53,6 +54,7 @@ public class NoticeServiceImpl implements NoticeService {
         return pageResponseDTO;
 
     }
+
 
     @Override
     public NoticeDTO read(Long noticeNo) {

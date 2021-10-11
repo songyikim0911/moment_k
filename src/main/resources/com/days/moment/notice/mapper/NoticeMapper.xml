@@ -6,8 +6,21 @@
 
 <mapper namespace="com.days.moment.notice.mapper.NoticeMapper">
 
+    <sql id="search">
+        <if test="type != null">
+            <foreach collection="arr" item="item" separator=" OR " open="WHERE (" close=")">
+                <if test="item == 'T'.toString()">
+                    notice_title like concat('%', #{keyword}, '%')
+                </if>
+                <if test="item == 'C'.toString()">
+                    notice_content like concat('%', #{keyword}, '%')
+                </if>
+            </foreach>
+        </if>
+    </sql>
+
     <insert id ="insert">
-        insert into practice_notice(notice_title, notice_content)
+        insert into notice(notice_title, notice_content)
         values(#{noticeTitle}, #{noticeContent})
 
         <selectKey order="AFTER" resultType="long" keyProperty="noticeNo">
@@ -20,14 +33,15 @@
         notice_no as noticeNo,
         notice_title as noticeTitle,
         notice_content as noticeContent,
-        notice_regdate as noticeRegDate,
-        notice_delete as noticeDelete
-        from practice_notice
+        notice_regdate as noticeRegDate
+        from notice
+        <include refid="search"></include>
         order by notice_no desc limit #{skip},#{size}
     </select>
 
     <select id="getCount" resultType="int">
-        select count(notice_no) from practice_notice
+        select count(notice_no) from notice
+        <include refid="search"></include>
     </select>
 
     <resultMap id="noticeMap" type="com.days.moment.notice.domain.Notice">
@@ -35,7 +49,6 @@
         <result property="noticeTitle" column="notice_title"></result>
         <result property="noticeContent" column="notice_content"></result>
         <result property="noticeRegDate" column="notice_regdate"></result>
-        <result property="noticeDelete" column="notice_delete"></result>
         <collection property="attachList" resultMap="attachMap"></collection>
     </resultMap>
 
@@ -48,26 +61,26 @@
     </resultMap>
 
     <select id="select" resultMap="noticeMap">
-        select * from practice_notice notice left join practice_noticeattach na on notice.notice_no = na.notice_no
+        select * from notice notice left join notice_pic na on notice.notice_no = na.notice_no
         where notice.notice_no = #{noticeNo}
     </select>
 
     <insert id="insertAttach">
-        insert into practice_noticeattach(uuid, notice_no, fileName, path, image)
+        insert into notice_pic(uuid, notice_no, fileName, path, image)
         values(#{uuid}, #{noticeNo}, #{fileName}, #{path}, #{image})
     </insert>
 
     <update id="update">
-        update practice_notice set notice_title =#{noticeTitle}, notice_content=#{noticeContent}
+        update notice set notice_title =#{noticeTitle}, notice_content=#{noticeContent}
         where notice_no=#{noticeNo}
     </update>
 
     <update id="deleteAttach">
-        delete from practice_noticeattach where notice_no=#{noticeNo}
+        delete from notice_pic where notice_no=#{noticeNo}
     </update>
 
     <delete id="delete">
-        delete from practice_notice where notice_no = #{noticeNo}
+        delete from notice where notice_no = #{noticeNo}
     </delete>
 
 </mapper>

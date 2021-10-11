@@ -1,25 +1,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="../includes/header.jsp"%>
-
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">List Page</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard v1</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <h4 class="page-title">Notice</h4>
+                <div class="ml-auto text-right">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Notice</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /.content-header -->
+
 
     <!-- Main content -->
     <section class="content">
@@ -31,8 +31,12 @@
                     <!-- TO DO List -->
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Bordered Table</h3>
+                            <h3 class="card-title">  </h3>
+                            <div align="right">
+                                <button><a href="/notice/write">게시글등록</a></button>
+                            </div>
                         </div>
+
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table class="table table-bordered">
@@ -66,7 +70,6 @@
                                             <option value="T" ${pageRequestDTO.type=="T"?"selected":""}>제목</option>
                                             <option value="TC" ${pageRequestDTO.type=="TC"?"selected":""}>제목내용</option>
                                             <option value="C" ${pageRequestDTO.type=="C"?"selected":""}>내용</option>
-                                            <option value="TCW" ${pageRequestDTO.type=="TCW"?"selected":""}>제목내용작성자</option>
                                         </select>
                                     </div>
                                 </div>

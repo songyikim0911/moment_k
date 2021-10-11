@@ -1,37 +1,41 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ksi64
-  Date: 2021-08-30
-  Time: 오후 3:20
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!-- /.content-wrapper -->
-<footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.1.0
-    </div>
+<footer class="footer text-center">
+    All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
 </footer>
-
-<!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-</aside>
-<!-- /.control-sidebar -->
+<!-- ============================================================== -->
+<!-- End footer -->
+<!-- ============================================================== -->
 </div>
-<!-- ./wrapper -->
-
-<!-- jQuery -->
-<script src="/resources/plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="/resources/plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-    $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="/resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/resources/js/adminlte.js"></script>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="/resources/assets/libs/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="/resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="/resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/resources/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="/resources/assets/extra-libs/sparkline/sparkline.js"></script>
+<!--Wave Effects -->
+<script src="/resources/dist/js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="/resources/dist/js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="/resources/dist/js/custom.min.js"></script>
+<!--This page JavaScript -->
+<!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
+<!-- Charts js Files -->
+<script src="/resources/assets/libs/flot/excanvas.js"></script>
+<script src="/resources/assets/libs/flot/jquery.flot.js"></script>
+<script src="/resources/assets/libs/flot/jquery.flot.pie.js"></script>
+<script src="/resources/assets/libs/flot/jquery.flot.time.js"></script>
+<script src="/resources/assets/libs/flot/jquery.flot.stack.js"></script>
+<script src="/resources/assets/libs/flot/jquery.flot.crosshair.js"></script>
+<script src="/resources/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+<script src="/resources/js/pages/chart/chart-page-init.js"></script>

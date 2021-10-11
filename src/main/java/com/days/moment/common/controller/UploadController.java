@@ -1,7 +1,7 @@
 package com.days.moment.common.controller;
 
 
-import com.days.moment.notice.dto.UploadResponseDTO;
+import com.days.moment.common.dto.UploadResponseDTO;
 import lombok.extern.log4j.Log4j2;
 import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.http.HttpHeaders;

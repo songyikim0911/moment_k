@@ -1,5 +1,7 @@
 package com.days.moment.common.config;
 
+import com.days.moment.member.config.SecurityConfig;
+import com.days.moment.member.config.SecurityServletConfig;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -19,14 +21,14 @@ import javax.servlet.ServletRegistration;
         protected Class<?>[] getRootConfigClasses() {
             log.info("1------------");
             log.info("1------------");
-            return new Class[]{RootConfig.class};
+            return new Class[]{RootConfig.class, SecurityConfig.class};
         }
 
         @Override
         protected Class<?>[] getServletConfigClasses() {
             log.info("2------------");
             log.info("2------------");
-            return new Class[]{ServletConfig.class};
+            return new Class[]{ServletConfig.class, SecurityServletConfig.class};
         }
 
         @Override
